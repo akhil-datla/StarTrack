@@ -186,6 +186,6 @@ func checkforErrors(errors []error) {
 
 //banner displays the application banner
 func banner() {
-	pterm.DefaultCenter.Print(pterm.DefaultHeader.WithFullWidth().WithBackgroundStyle(pterm.NewStyle(pterm.BgYellow)).WithMargin(10).Sprint("StarTrack"))
+	pterm.DefaultCenter.Print(pterm.DefaultHeader.WithFullWidth().WithBackgroundStyle(pterm.NewStyle(pterm.BgLightBlue)).WithMargin(10).Sprint("StarTrack"))
 	pterm.Info.Println("Made by Akhil Datla")
 }
