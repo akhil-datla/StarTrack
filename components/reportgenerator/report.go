@@ -5,6 +5,7 @@ import (
 	"main/components/reviewprocessor"
 )
 
+//GetRatings gets the total ratings for a given date
 func GetRatings(date string) (map[string]int, error) {
 	ratings := make(map[string]int)
 	var dateAnalytics reviewprocessor.DateAnalytics
