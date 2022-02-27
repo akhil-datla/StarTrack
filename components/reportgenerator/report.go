@@ -41,6 +41,7 @@ func GetRatingsRange(startDate string, endDate string) (map[string]int, error) {
 	for currDateObj.Before(endDateObj) {
 		err = dbmanager.Query("Date", currDateObj.Format("01-02-2006"), &dateAnalytics)
 		if err != nil {
+			currDateObj = currDateObj.AddDate(0, 0, 1)
 			continue
 		} else {
 			totalRatings["1"] += dateAnalytics.Rating1
