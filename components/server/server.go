@@ -38,5 +38,6 @@ func InitializeRoutes(log bool) {
 	e.Static("/", filepath.Join(filepath.Dir(""), "static"))
 
 	e.GET("/ratings", getRatings)
+	e.GET("/ratings/range", getRatingsRange)
 
 }
