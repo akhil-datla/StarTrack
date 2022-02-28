@@ -3,7 +3,6 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"path/filepath"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -15,6 +14,13 @@ var e *echo.Echo
 func Start(port int, log bool) {
 	e = echo.New()
 	e.HideBanner = true
+	e.Use(middleware.Gzip())
+	e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
+		Root:   "build",
+		Index:  "index.html",
+		Browse: false,
+		HTML5:  true,
+	}))
 	InitializeRoutes(log)
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", port)))
 }
@@ -34,8 +40,6 @@ func InitializeRoutes(log bool) {
 	}
 
 	e.Use(middleware.CORSWithConfig(DefaultCORSConfig))
-
-	e.Static("/", filepath.Join(filepath.Dir(""), "static"))
 
 	e.GET("/ratings", getRatings)
 	e.POST("/ratings/date", getRatingsDate)
