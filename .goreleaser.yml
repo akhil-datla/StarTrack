@@ -1,4 +1,7 @@
 # .goreleaser.yml
+archives:
+- files:
+  - build/
 builds:
   - goos:
       - linux
