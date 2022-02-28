@@ -11,12 +11,14 @@ func GetRatings() (map[string]int, error) {
 	totalRatings := make(map[string]int)
 	var dateAnalytics []*reviewprocessor.DateAnalytics
 	err := dbmanager.QueryAll(&dateAnalytics)
+
+	totalRatings["1"] = 0
+	totalRatings["2"] = 0
+	totalRatings["3"] = 0
+	totalRatings["4"] = 0
+	totalRatings["5"] = 0
+
 	if err != nil {
-		totalRatings["1"] = 0
-		totalRatings["2"] = 0
-		totalRatings["3"] = 0
-		totalRatings["4"] = 0
-		totalRatings["5"] = 0
 		return totalRatings, err
 	}
 
