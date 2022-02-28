@@ -31,6 +31,11 @@ func Query(fieldName string, value, to interface{}) error {
 	return err
 }
 
+func QueryAll(to interface{}) error {
+	err := db.All(to)
+	return err
+}
+
 //Update updates the data (struct)
 func Update(data interface{}) error {
 	err := db.Update(data)
